@@ -3,7 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Staff(AbstractUser):
-    sex = models.CharField(max_length=10, null=True, blank=True)
+    class Sex(models.TextChoices):
+        MAN = 'M', ('Man')
+        WOMAN = 'F', ('Woman')
+    sex = models.CharField('sex', max_length=1, choices=Sex.choices, null=True)
 
     def __str__(self):
         return f'{self.username}'
