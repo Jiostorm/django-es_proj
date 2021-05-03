@@ -5,7 +5,7 @@ from .models import Staff
 class StaffCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = Staff
-        fields = UserCreationForm.Meta.fields + ('sex',)
+        fields = UserCreationForm.Meta.fields + ('email', 'sex',)
 
 class StaffChangeForm(UserChangeForm):
     class Meta:
