@@ -1,0 +1,2 @@
+Covid System == localhost:8000
+Church System == localhost:8001
