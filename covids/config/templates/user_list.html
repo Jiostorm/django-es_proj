@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} User List {% endblock title %}
+
+{% block navbar %}
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'user_list'%}">User List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'logs_list'%}">Covid Logs List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'cc_list'%}">Close Contact List</a>
+  </li>
+{% endblock%}
+
+{% block content%}
+  <div class="container-fluid mt-4">
+      <a href="{% url 'user_new' %}"><button class="btn btn-secondary">Create New User</button></a>
+      {% for user in all_user_list %}
+        <div class="card mt-4">
+            <a style="text-decoration: none;" href="{% url 'user_detail' user.pk %}">
+                <div class="card-header">
+                    <span class="font-weight-bold d-block"><h3>{{ user.last_name }}, {{ user.first_name}} {{ user.middle_name}}</h3></span>
+                    <span class="text-muted">Recorded by {{ user.staff }}</span>
+                </div>
+            </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content%}

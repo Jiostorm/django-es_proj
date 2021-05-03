@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<br />
+<div class="jumbotron">
+    <h1 class="display-4">Church System App</h1>
+    <p class="lead">A Church system app for tracking all members of the church.</p>
+    {% if user.is_authenticated %}
+    <p class="lead">Adria Loves Jobb</p>
+    {% endif %}
+</div>
+{% endblock content %}

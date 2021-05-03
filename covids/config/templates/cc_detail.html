@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Close Contact Detail {% endblock title %}
+
+{% block content%}
+    <div class="card mt-4">
+        <div class="card-header">
+            <span class="font-weight-bold d-block"><h3>Recorded by {{ cc.staff_id }}</h3></span>
+        </div>
+        <div class="card-body">
+            <p class="lead">Covid Close Contact: {{ cc.close_user_id }}</p>
+            <p class="lead">Covid Carrier: {{ cc.covid_user_id }}</p>
+            <p class="lead">Date Recorded: {{ cc.date_recorded }}</p>
+            <p class="lead">Date Quarantine Ends (for Close Contact): {{ cc.date_quarantine_ends }}</p>
+        </div>
+    </div>
+{% endblock content%}

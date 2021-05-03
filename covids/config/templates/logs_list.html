@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Covid Logs List {% endblock title %}
+
+{% block navbar %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link active" href="{% url 'logs_list'%}">Covid Logs List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'cc_list'%}">Close Contact List</a>
+  </li>
+{% endblock%}
+
+{% block content%}
+  <div class="container-fluid mt-4">
+      <div class="d-inline-block">
+          <a href="{% url 'logs_new' %}"><button class="btn btn-secondary">Create New Covid Logs</button></a>
+          <a href="{% url 'user_new' %}"><button class="btn btn-secondary">Create New User</button></a>
+      </div>
+      {% for log in all_logs_list %}
+        <div class="card mt-4">
+            <a style="text-decoration: none;" href="{% url 'logs_detail' log.pk %}">
+                <div class="card-header">
+                    <span class="font-weight-bold d-block"><h3>{{ log.covid_user_id }}</h3></span>
+                    <span class="text-muted">Recorded by: {{ log.staff_id }}</span>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Covid Status: {{ log.get_covid_status_display }}</p>
+                    <p class="lead">Health Status: {{ log.get_health_status_display }}</p>
+                </div>
+            </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content%}

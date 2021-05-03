@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Close Contact Detail {% endblock title %}
+
+{% block content%}
+    <div class="card mt-4">
+        <div class="card-header">
+            <span class="font-weight-bold d-block"><h3>{{ logs.covid_user_id }}</h3></span>
+            <span class="text-muted">Recorded by: {{ logs.staff_id }}</span>
+        </div>
+        <div class="card-body">
+            <p class="lead">Date Recorded: {{ logs.date_recorded }}</p>
+            <p class="lead">Date Swabbed: {{ logs.date_swabbed }}</p>
+            <p class="lead">Covid Status: {{ logs.get_covid_status_display }}</p>
+            <p class="lead">Health Status: {{ logs.get_health_status_display }}</p>
+        </div>
+        <div class="card-footer">
+            <p class="lead">Date Quarantine Ends: {{ logs.date_quarantine_ends }}</p>
+        </div>
+    </div>
+{% endblock content%}
