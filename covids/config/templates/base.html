@@ -15,6 +15,15 @@
         {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto">
           {% block navbar %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logs_list'%}">Covid Logs List</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cc_list'%}">Close Contact List</a>
+              </li>
           {% endblock%}
         </ul>
         {% endif %}

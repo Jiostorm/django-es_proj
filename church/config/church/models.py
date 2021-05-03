@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from staff.models import Staff
 from user.models import User
@@ -20,3 +21,6 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f'{self.event_type}-{self.date_attended}-{self.user_id}'
+
+    def get_absolute_url(self):
+        return reverse('attend_detail', args=[str(self.id)])

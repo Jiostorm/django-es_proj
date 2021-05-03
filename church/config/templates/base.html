@@ -11,11 +11,20 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <!-- <a class="navbar-brand" href="{% url 'home' %}">Newspaper</a> -->
+        <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-church"></i> Church System</a>
         {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto">
+          {% block navbar %}
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'attend_list'%}">Attendance List</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ref_list' %}">Covid Reference List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+            </li>
+          {% endblock%}
         </ul>
         {% endif %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,5 +67,6 @@
     axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 </script>
 <script src="https://unpkg.com/vue@next"></script>
+<script type="text/javascript" src="https://kit.fontawesome.com/b5e97bb16b.js" crossorigin="anonymous"></script>
 
 </html>

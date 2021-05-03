@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from user.models import User
 from staff.models import Staff
@@ -10,4 +11,7 @@ class CovidReference(models.Model):
     covid_reference_id = models.CharField(max_length=6)
 
     def __str__(self):
-        return covid_reference_id
+        return self.covid_reference_id
+
+    def get_absolute_url(self):
+        return reverse('ref_detail', args=[str(self.user_id)])
