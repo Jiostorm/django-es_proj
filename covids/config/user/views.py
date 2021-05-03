@@ -5,8 +5,23 @@ from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
 )
 
+from rest_framework.generics import RetrieveAPIView, ListAPIView
+
+from .serializers import UserVerifyModelSerializer
 from .models import User
 # Create your views here.
+
+# API views
+
+class UserVerifyModelView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserVerifyModelSerializer
+
+class UserListModelView(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserVerifyModelSerializer
+
+# Default views
 
 class UserListView(LoginRequiredMixin, ListView):
     model = User

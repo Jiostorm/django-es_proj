@@ -3,8 +3,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 
+from rest_framework.generics import UpdateAPIView, ListAPIView
+
+from .serializers import CovidReferenceUpdateModelSerializer
 from .models import CovidReference
 # Create your views here.
+
+# API views
+
+class CovidReferenceUpdateModelView(UpdateAPIView):
+    queryset = CovidReference.objects.all()
+    serializer_class = CovidReferenceUpdateModelSerializer
+
+class CovidReferenceListModelView(ListAPIView):
+    queryset = CovidReference.objects.all()
+    serializer_class = CovidReferenceUpdateModelSerializer
+
+# Default views
 
 class CovidReferenceListView(LoginRequiredMixin, ListView):
     model = CovidReference

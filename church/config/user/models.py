@@ -15,11 +15,11 @@ class User(models.Model):
     age = models.IntegerField()
     sex = models.CharField(max_length=1, choices=Sex.choices, null=True)
     profession = models.CharField(max_length=50)
-
+    
     staff = models.ForeignKey(Staff, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f'{self.last_name}, {self.first_name} {self.middle_name}'
+        return f'{self.last_name}, {self.first_name} {self.middle_name[0]}.'
 
     def get_absolute_url(self):
         return reverse('user_detail', args=[str(self.id)])

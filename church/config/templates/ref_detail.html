@@ -2,7 +2,17 @@
 
 {% block title %} Covid Reference Detail {% endblock title %}
 
-{% block content%}
+{% block script %}
+    <script type="text/javascript">
+        firstName = "{{ ref.user.first_name }}";
+        middleName =  "{{ ref.user.middle_name }}";
+        lastName = "{{ ref.user.last_name }}";
+        covidID = "{{ ref.covid_reference_id }}";
+        currentID = "{{ ref.user_id }}";
+    </script>
+{% endblock %}
+
+{% block content %}
     <div class="card mt-4">
         <div class="card-header">
             <span class="font-weight-bold d-block"><h3>{{ ref.user }}</h3></span>
@@ -10,6 +20,13 @@
         <div class="card-body">
             <p class="lead">Covid Reference ID: {{ ref.covid_reference_id }}</p>
             <p class="lead">Recorded by: {{ ref.staff_id }}</p>
+            <p class="lead">Verified: <span class="badge badge-pill badge-secondary">{{ ref.verified }}</span></p>
         </div>
+        {% if not ref.verified %}
+        <div class="card-footer d-inline-block" id="app">
+            <button class="btn btn-primary" @click="verifyCovidReference">Verify</button>
+            [[ message ]]
+        </div>
+        {% endif %}
     </div>
 {% endblock content%}

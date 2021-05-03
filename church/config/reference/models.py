@@ -9,6 +9,7 @@ class CovidReference(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     staff_id = models.ForeignKey(Staff, on_delete=models.PROTECT)
     covid_reference_id = models.CharField(max_length=6)
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.covid_reference_id

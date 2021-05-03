@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Dependencies
     'rest_framework',
     'crispy_forms',
+    'corsheaders',
     # Apps
     'staff',
     'user',
@@ -51,12 +52,18 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8000',
+    'http://localhost:8001',
+)
 
 ROOT_URLCONF = 'config.urls'
 

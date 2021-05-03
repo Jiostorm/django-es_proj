@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %} User List {% endblock title %}
+{% block title %} User Detail {% endblock title %}
 
-{% block content%}
+{% block navbar %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'attend_list'%}">Attendance List</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'ref_list' %}">Covid Reference List</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+    </li>
+{% endblock %}
+
+{% block content %}
     <div class="card mt-4">
         <div class="card-header">
-            <span class="font-weight-bold d-block"><h3>{{ user.last_name }}, {{ user.first_name}} {{ user.middle_name}}</h3></span>
+            <span class="font-weight-bold d-block"><h3>{{ user.last_name }}, {{ user.first_name }} {{ user.middle_name }}</h3></span>
             <span class="text-muted">Recorded by {{ user.staff }}</span>
         </div>
         <div class="card-body">
