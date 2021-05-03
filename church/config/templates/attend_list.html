@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} User List {% endblock title %}
+
+{% block navbar %}
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'attend_list'%}">Attendance List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'ref_list'%}">Covid Reference List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+  </li>
+{% endblock%}
+
+{% block content%}
+  <div class="container-fluid mt-4">
+      <a href="{% url 'attend_new' %}"><button class="btn btn-secondary">Add New Attendance Record</button></a>
+      {% for attend in all_attends_list %}
+        <div class="card mt-4">
+            <a style="text-decoration: none;" href="{% url 'attend_detail' attend.pk %}">
+                <div class="card-header">
+                    <span class="font-weight-bold d-block"><h3>{{ attend.user_id }} attended {{ attend.get_event_type_display }} on {{ attend.date_attended}}</h3></span>
+                    <span class="text-muted">Recorded by {{ attend.staff_id }}</span>
+                </div>
+            </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content%}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} User List {% endblock title %}
+
+{% block content%}
+    <div class="card mt-4">
+        <div class="card-header">
+            <span class="font-weight-bold d-block"><h3>{{ user.last_name }}, {{ user.first_name}} {{ user.middle_name}}</h3></span>
+            <span class="text-muted">Recorded by {{ user.staff }}</span>
+        </div>
+        <div class="card-body">
+            <p class="lead">Age: {{ user.age }}</p>
+            <p class="lead">Sex: {{ user.get_sex_display }}</p>
+            <p class="lead">Profession: {{ user.profession }}</p>
+            <p class="lead">Code: {{ user.code }}</p>
+            <p class="lead">Date Quarantine Ends: {{ user.quarantine_ends }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'user_edit' user.pk %}">Edit</a>
+        </div>
+    </div>
+{% endblock content%}
