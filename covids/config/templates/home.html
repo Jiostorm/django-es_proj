@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Covid System{% endblock title %}
+
+{% block navbar %}
+{% endblock %}
 
 {% block content %}
 <br />
 <div class="jumbotron">
-    <h1 class="display-4">Church System App</h1>
-    <p class="lead">A Church system app for tracking all members of the church.</p>
+    <h1 class="display-4">Covid System App</h1>
+    <p class="lead">A Covid system app for tracking covid positive patients and their close contacts.</p>
     {% if user.is_authenticated %}
-    <p class="lead">Adria Loves Jobb</p>
+        <hr class="my-2">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p class="lead">What do you want to do today?</p>
+        <a href="{% url 'user_list' %}"><button class="btn btn-success">View User List</button></a>
+        <a href="{% url 'logs_list' %}"><button class="btn btn-danger">View Covid Logs List</button></a>
+        <a href="{% url 'cc_list' %}"><button class="btn btn-dark">View Close Contact List</button></a>
     {% endif %}
 </div>
 {% endblock content %}

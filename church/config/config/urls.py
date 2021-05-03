@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from church.views import AttendanceListView
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('ref/', include('reference.urls')),
     path('attendance/', include('church.urls')),
-    path('', AttendanceListView.as_view(), name='home')
+    path('', TemplateView.as_view(template_name='home.html'), name='home')
 ]

@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.views.generic import TemplateView
-from logs.views import LogListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +25,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('cc/', include('close_contact.urls')),
     path('logs/', include('logs.urls')),
-    path('', LogListView.as_view(), name='home'),
+    path('', TemplateView.as_view(template_name='home.html'), name='home')
 ]

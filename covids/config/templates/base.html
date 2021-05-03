@@ -12,26 +12,24 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-hospital-alt"></i> Covid System</a>
-        {% if user.is_authenticated %}
-        <ul class="navbar-nav mr-auto">
-          {% block navbar %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_list'%}">User List</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logs_list'%}">Covid Logs List</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'cc_list'%}">Close Contact List</a>
-              </li>
-          {% endblock%}
-        </ul>
-        {% endif %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+              {% block navbar %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_list'%}">User List</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logs_list'%}">Covid Logs List</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'cc_list'%}">Close Contact List</a>
+                  </li>
+              {% endblock%}
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +44,7 @@
             </ul>
             {% else %}
             <form class="form-inline ml-auto">
-                <a href="{% url 'login' %}" class="btn btn-outline-secondary">Log In</a>
+                <a href="{% url 'login' %}" class="btn btn-secondary">Log In</a>
                 <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Sign Up</a>
             </form>
             {% endif %}
