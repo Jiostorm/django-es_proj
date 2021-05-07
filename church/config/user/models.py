@@ -15,7 +15,7 @@ class User(models.Model):
     age = models.IntegerField()
     sex = models.CharField(max_length=1, choices=Sex.choices, null=True)
     profession = models.CharField(max_length=50)
-    
+
     staff = models.ForeignKey(Staff, on_delete=models.PROTECT)
 
     def __str__(self):

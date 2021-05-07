@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+
 from user.models import User
 from staff.models import Staff
 
@@ -27,6 +28,14 @@ class Log(models.Model):
     @property
     def date_quarantine_ends(self):
         return self.date_swabbed + datetime.timedelta(days=14)
+
+    def save(self, *args, **kwargs):
+        user = User.objects.get(pk=self.covid_user_id.pk)
+        user.quarantine_ends = self.date_quarantine_ends
+        user.code = self.get_covid_status_display()
+        self.covid_user_id = user
+        user.save()
+        super(Log, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.covid_user_id}-{self.date_swabbed}-{self.covid_status}-{self.health_status}'

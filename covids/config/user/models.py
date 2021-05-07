@@ -20,7 +20,7 @@ class User(models.Model):
 
     staff = models.ForeignKey(Staff, on_delete=models.PROTECT)
 
-    code = models.CharField(max_length=6, null=True, blank=True)
+    code = models.CharField(max_length=8, null=True, blank=True)
     quarantine_ends = models.DateField(null=True, blank=True)
 
     def __str__(self):

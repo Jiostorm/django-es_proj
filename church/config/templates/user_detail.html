@@ -12,8 +12,10 @@
             <p class="lead">Age: {{ d_user.age }}</p>
             <p class="lead">Sex: {{ d_user.get_sex_display }}</p>
             <p class="lead">Profession: {{ d_user.profession }}</p>
-            <p class="lead">Code: {{ d_user.code }}</p>
-            <p class="lead">Date Quarantine Ends: {{ d_user.quarantine_ends }}</p>
+            <span id="covid_ref">
+                <p class="lead">Code: {{ d_user.code }}</p>
+                <p class="lead">Date Quarantine Ends: {{ d_user.quarantine_ends }}</p>
+            </span>
         </div>
         <div class="card-footer">
             <a href="{% url 'user_edit' d_user.pk %}">Edit</a>
