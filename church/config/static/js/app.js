@@ -7,7 +7,8 @@ const app = Vue.createApp({
             lastName: '',
             covidID: '',
             currentID: '',
-            message: ''
+            message: '',
+            csrftoken: '',
         }
     },
     methods: {
@@ -18,7 +19,7 @@ const app = Vue.createApp({
                 if (this.firstName == res.data.first_name && this.middle_name == res.data.middleName && this.lastName == res.data.last_name) {
                   this.updateVerify()
                 } else {
-                  // this.message = 'Verification failed. The names are not equal or the wrong covid ID reference number was given.'
+                  this.message = 'Verification failed. The names are not equal or the wrong covid ID reference number was given.'
                 }
             })
             .catch((error) => {
@@ -29,7 +30,12 @@ const app = Vue.createApp({
         async updateVerify() {
           axios.put('http://127.0.0.1:8001/ref/api/' + this.currentID, {
             user: this.currentID,
+            covid_reference_id: this.covidID,
             verified: true
+          }, {
+            headers: {
+              'X-CSRFTOKEN': this.csrftoken
+            },
           }).then((res) => {
             console.log(res)
             this.message = 'Verification success! Refresh to see updated results'
@@ -45,6 +51,7 @@ const app = Vue.createApp({
         this.lastName = lastName;
         this.covidID = covidID;
         this.currentID = currentID;
+        this.csrftoken = csrftoken;
     }
 })
 
