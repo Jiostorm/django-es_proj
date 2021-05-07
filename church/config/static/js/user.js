@@ -4,6 +4,7 @@ const app = Vue.createApp({
         return {
             // Base Information
             refID: '',
+            firstName: '',
             // Processed Information
             covidID: '',
             code: '',
@@ -24,19 +25,23 @@ const app = Vue.createApp({
             })
             .catch((error) => {
                 console.log(error)
+                this.code = 'The user\'s Covid Reference ID is still not yet verified.'
             })
         },
         async getCovidStatus() {
           axios.get('http://127.0.0.1:8000/user/api/' + this.covidID)
           .then((res) => {
                 console.log(res)
-                if(res.data.code != null)
+                if(res.data.code != null) {
                     this.code = 'Code: ' + res.data.code
-                if(res.data.quarantine_ends != null) {
-                    const month = ["January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"];
-                    date = new Date(res.data.quarantine_ends)
-                    this.date_quarantine_ends = `Date Quarantine Ends: ${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+                    if(res.data.quarantine_ends != null) {
+                        const month = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+                        date = new Date(res.data.quarantine_ends)
+                        this.date_quarantine_ends = `Date Quarantine Ends: ${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+                    }
+                } else {
+                    this.code = `${this.firstName} has no record on Covid.`
                 }
           }).catch((error) => {
                 console.log(error)
@@ -45,6 +50,7 @@ const app = Vue.createApp({
     },
     mounted() {
         this.refID = refID;
+        this.firstName = firstName;
         this.getVerified();
     }
 })

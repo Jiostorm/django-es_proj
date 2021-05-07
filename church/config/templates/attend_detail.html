@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} User List {% endblock title %}
+
+{% block script %}
+    <script type="text/javascript">
+        firstName = "{{ attend.user_id.first_name }}";
+        refID = "{{ attend.user_id.id }}";
+    </script>
+{% endblock %}
 
 {% block content%}
     <div class="card mt-4">
@@ -11,9 +19,19 @@
         <div class="card-body">
             <p class="lead">Event: {{ attend.get_event_type_display }}</p>
             <p class="lead">Date Attended: {{ attend.date_attended }}</p>
+            <span id="covid_ref">
+                <p class="lead">[[ code ]]</p>
+                <p class="lead">[[ date_quarantine_ends ]]</p>
+            </span>
         </div>
     </div>
     <div class="form-group mt-4">
         <a href="{% url 'attend_new' %}"><button class="btn btn-primary">Add New Attendance</button></a>
     </div>
-{% endblock content%}
+    <script src="https://unpkg.com/axios/dist/axios.min.js">
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    </script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="{% static 'js/user.js' %}" charset="utf-8"></script>
+{% endblock %}

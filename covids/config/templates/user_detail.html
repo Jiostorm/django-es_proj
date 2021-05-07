@@ -9,6 +9,7 @@
             <span class="text-muted">Recorded by {{ d_user.staff }}</span>
         </div>
         <div class="card-body">
+            <p class="lead">Covid Reference ID: {{ d_user.pk }}</p>
             <p class="lead">Age: {{ d_user.age }}</p>
             <p class="lead">Sex: {{ d_user.get_sex_display }}</p>
             <p class="lead">Profession: {{ d_user.profession }}</p>

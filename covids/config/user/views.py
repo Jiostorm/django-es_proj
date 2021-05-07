@@ -5,7 +5,7 @@ from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
 )
 
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
 
 from .serializers import UserVerifyModelSerializer
 from .models import User
@@ -13,7 +13,7 @@ from .models import User
 
 # API views
 
-class UserVerifyModelView(RetrieveAPIView):
+class UserVerifyModelView(RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserVerifyModelSerializer
 
