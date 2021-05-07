@@ -25,7 +25,7 @@ class UserCreateView(LoginRequiredMixin, CreateView):
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'user_detail.html'
-    context_object_name = 'user'
+    context_object_name = 'd_user'
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
