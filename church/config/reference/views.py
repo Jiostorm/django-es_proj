@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 
-from rest_framework.generics import UpdateAPIView, ListAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
 
 from .serializers import CovidReferenceUpdateModelSerializer
 from .models import CovidReference
@@ -11,7 +11,7 @@ from .models import CovidReference
 
 # API views
 
-class CovidReferenceUpdateModelView(UpdateAPIView):
+class CovidReferenceUpdateModelView(RetrieveUpdateAPIView):
     queryset = CovidReference.objects.all()
     serializer_class = CovidReferenceUpdateModelSerializer
 

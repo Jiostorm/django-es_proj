@@ -4,4 +4,4 @@ from .models import CovidReference
 class CovidReferenceUpdateModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CovidReference
-        fields = ('user', 'verified')
+        fields = ('user', 'covid_reference_id', 'verified')
