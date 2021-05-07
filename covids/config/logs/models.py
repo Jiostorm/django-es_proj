@@ -27,7 +27,7 @@ class Log(models.Model):
 
     @property
     def date_quarantine_ends(self):
-        return self.date_swabbed + datetime.timedelta(days=14)
+        return None if self.get_covid_status_display() == 'Negative' else self.date_swabbed + datetime.timedelta(days=14)
 
     def save(self, *args, **kwargs):
         user = User.objects.get(pk=self.covid_user_id.pk)
