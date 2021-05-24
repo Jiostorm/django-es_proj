@@ -1,8 +1,8 @@
-# Enterprise Systems Project
+# **Enterprise Systems Project**
 
-## Django & JS Based Integration
+> *Django & JS Based Integration*
 
-#### Developers:
+#### *Developers:*
 
 ##### - *Jobb Rodriguez*
 
