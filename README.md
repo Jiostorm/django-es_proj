@@ -3,7 +3,5 @@
 > *Django & JS Based Integration*
 
 #### *Developers:*
-
-##### - *Jobb Rodriguez*
-
-##### - *George William Sison*
+- *Jobb Rodriguez*
+- *George William Sison*
